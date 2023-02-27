@@ -5,10 +5,11 @@ const context = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const frameCount = 1344;
+//change frame count to how many frames in thoratic file
+const frameCount = 1513;
 const currentFrame = index => (
     //change to our render frames of thoratic
-  `mp4_to_JPEG/px_final_render_frames/frame${index.toString()}.jpg`
+    `mp4_to_JPEG/thoratic_compressed/Thoratic Project Page${index.toString().padStart(4, '0')}.jpg`
 )
 function start() {
   screen.addEventListener('resize', fitCanvas, false);
@@ -49,49 +50,10 @@ window.addEventListener('scroll', () => {
     frameCount - 1,
     Math.floor(scrollFraction * frameCount)
   );
-  //console.log(frameIndex)
+  console.log(frameIndex)
   requestAnimationFrame(() => updateImage(frameIndex + 1))
   
 });
 
-/*
-function resize() {
-  // aspect ratio
-  var widthToHeight = canvas.width / canvas.height;
-  var newWidthToHeight = widthToHeight;
 
-  // cache the window dimensions (discount the border)
-  var newWidth = window.innerWidth,
-      newHeight = window.innerHeight;
-
-  if (stretch_to_fit) {
-      // overwrite the current canvas aspect ratio to fit the entire screen
-      widthToHeight = window.innerWidth / window.innerHeight;
-  } else {
-      newWidthToHeight = newWidth / newHeight;
-  }
-
-
-  // scale the container using CSS		
-  if (newWidthToHeight > widthToHeight) {
-      newWidth = newHeight * widthToHeight;
-      container.style.height = newHeight + 'px';
-      container.style.width = newWidth + 'px';
-  } else {
-      newHeight = newWidth / widthToHeight;
-      container.style.width = newWidth + 'px';
-      container.style.height = newHeight + 'px';
-  }
-
-  // adjust the container position 
-  // (a visual sugar that centralises the canvas on result page)
-  container.style.marginTop = (-newHeight / 2) + 'px';
-  container.style.marginLeft = (-newWidth / 2) + 'px';
-
-};
- // listen to resize events
-window.addEventListener('resize', function () {
-  resize();
-}, false);
-*/
 preloadImages()
